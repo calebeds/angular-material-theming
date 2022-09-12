@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use "/node_modules/@angular/material/theming" as material;
+@use "./app/banner/banner.component.scss-theme.scss" as banner;
 @use "sass:map";
 
 @include material.mat-core();
@@ -35,6 +36,7 @@ $workshop-theme: map.deep-merge(
 // @debug $workshop-theme;
 
 @include material.angular-material-theme($workshop-theme);
+@include banner.app-banner-theme($workshop-theme);
 
 html,
 body {
