@@ -1,0 +1,25 @@
+@use "/node_modules/@angular/material/theming" as material;
+@use "./common.scss";
+
+$workshop-typography: material.mat-typography-config(
+  $font-family: "'Open Sans', sans-serif;",
+  $display-4:
+    material.mat-typography-level(95px, 95px, 300, $letter-spacing: -0.05em),
+);
+
+@include material.mat-core();
+
+$workshop-primary: material.mat-palette(material.$mat-cyan, 500, 200, 700);
+$workshop-accent: material.mat-palette(material.$mat-pink, A200, A100);
+
+$workshop-theme: material.mat-light-theme(
+  (
+    color: (
+      primary: $workshop-primary,
+      accent: $workshop-accent,
+    ),
+    typography: common.$workshop-typography,
+  )
+);
+
+$workshop-theme: common.apply-extra-colors($workshop-theme);
