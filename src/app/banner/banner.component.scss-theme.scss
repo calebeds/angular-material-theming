@@ -1,11 +1,35 @@
 @use "/node_modules/@angular/material/theming" as material;
 
+@mixin app-banner-typography($typography-config) {
+  app-banner {
+    .heading {
+      @include material.mat-typography-level-to-styles(
+        $typography-config,
+        title
+      );
+    }
+
+    .message {
+      @include material.mat-typography-level-to-styles(
+        $typography-config,
+        body-1
+      );
+    }
+  }
+}
+
 @mixin app-banner-theme($theme) {
   $theme-colors: material.mat-get-color-config($theme);
+  $typography: material.mat-get-typography-config($theme);
+
   $success-color-palette: map-get($theme-colors, success);
   $info-color-palette: map-get($theme-colors, info);
   $warn-color-palette: map-get($theme-colors, warn);
   $backgrounds: map-get($theme-colors, background);
+
+  @if ($typography != null) {
+    @include app-banner-typography($typography);
+  }
 
   app-banner {
     background-color: material.mat-color($backgrounds, card);

@@ -3,6 +3,12 @@
 @use "./app/banner/banner.component.scss-theme.scss" as banner;
 @use "sass:map";
 
+$workshop-typography: material.mat-typography-config(
+  $font-family: "'Open Sans', sans-serif;",
+  $display-4:
+    material.mat-typography-level(95px, 95px, 300, $letter-spacing: -0.05em),
+);
+
 @include material.mat-core();
 
 $workshop-primary: material.mat-palette(material.$mat-cyan, 500, 200, 800);
@@ -18,6 +24,7 @@ $workshop-theme: material.mat-light-theme(
       primary: $workshop-primary,
       accent: $workshop-accent,
     ),
+    typography: $workshop-typography,
   )
 );
 
