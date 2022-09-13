@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-banner',
@@ -8,6 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BannerComponent implements OnInit {
   @Input()
   message = '';
+
+  @Input()
+  type: 'success' | 'info' | 'warn' | 'none' = 'none';
+
+  @HostBinding('class')
+  get hostClass() {
+    if (this.type !== 'none') {
+      return `app-banner-${this.type}`;
+    }
+  }
 
   constructor() {}
 
