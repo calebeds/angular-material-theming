@@ -1,5 +1,12 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+  Component,
+  HostBinding,
+  Inject,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 
 @Component({
@@ -8,10 +15,10 @@ import { MatSelectChange } from '@angular/material/select';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  @HostBinding('class')
-  currentTheme: 'light-theme' | 'dark-theme' = 'dark-theme';
-
-  constructor(private overlayContainer: OverlayContainer) {}
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit(): void {
     this.setTheme('dark-theme');
@@ -22,14 +29,10 @@ export class AppComponent implements OnInit {
   }
 
   setTheme(currentTheme: 'light-theme' | 'dark-theme'): void {
-    this.currentTheme = currentTheme;
-    this.overlayContainer
-      .getContainerElement()
-      .classList.remove(
-        this.currentTheme === 'light-theme' ? 'dark-theme' : 'light-theme'
-      );
-    this.overlayContainer
-      .getContainerElement()
-      .classList.add(this.currentTheme);
+    this.renderer.removeClass(
+      this.document.body,
+      currentTheme === 'light-theme' ? 'dark-theme' : 'light-theme'
+    );
+    this.renderer.addClass(this.document.body, currentTheme);
   }
 }
