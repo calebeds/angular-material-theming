@@ -16,7 +16,7 @@
   <section class="sort-area">
     <mat-form-field class="drop-down">
       <mat-label>Choose a theme</mat-label>
-      <mat-select (selectionChange)="onSelectionChange($event)">
+      <mat-select (selectionChange)="setTheme($event)">
         <mat-option value="dark-theme">Dark</mat-option>
         <mat-option value="light-theme">Light</mat-option>
       </mat-select>

@@ -9,10 +9,10 @@ $workshop-typography: material.mat-typography-config(
 
 @include material.mat-core();
 
-$workshop-primary: material.mat-palette(material.$mat-cyan, 700, 400, 900);
-$workshop-accent: material.mat-palette(material.$mat-pink, A200, A100, A300);
+$workshop-primary: material.mat-palette(material.$mat-cyan, 500, 200, 700);
+$workshop-accent: material.mat-palette(material.$mat-pink, A200, A100);
 
-$workshop-theme: material.mat-dark-theme(
+$workshop-theme: material.mat-light-theme(
   (
     color: (
       primary: $workshop-primary,
@@ -23,3 +23,6 @@ $workshop-theme: material.mat-dark-theme(
 );
 
 $workshop-theme: common.apply-extra-colors($workshop-theme);
+
+// Generate theme
+@include common.create-theme($workshop-theme);
