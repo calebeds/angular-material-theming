@@ -20,6 +20,7 @@ $workshop-theme: material.mat-dark-theme(
       accent: $workshop-accent,
     ),
     typography: common.$workshop-typography,
+    density: minimum,
   )
 );
 

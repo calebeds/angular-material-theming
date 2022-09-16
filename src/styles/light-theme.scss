@@ -19,6 +19,7 @@ $workshop-theme: material.mat-light-theme(
       accent: $workshop-accent,
     ),
     typography: common.$workshop-typography,
+    density: minimum,
   )
 );
 
