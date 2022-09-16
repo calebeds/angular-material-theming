@@ -10,7 +10,7 @@
 @include material.cdk-text-field();
 
 @include material.mat-private-strong-focus-indicators-positioning();
-@include material.mat-base-typography(common.$workshop-typography);
+@include material.mat-base-typography(common.$workshop-typography, "body");
 
 // @debug $workshop-theme;
 
