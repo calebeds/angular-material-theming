@@ -28,7 +28,14 @@ $workshop-typography: material.mat-typography-config(
 }
 
 @mixin create-theme($workshop-theme) {
-  @include material.angular-material-theme($workshop-theme);
+  // @include material.angular-material-theme($workshop-theme);
+  @include material.mat-core-theme($workshop-theme);
+  @include material.mat-select-theme($workshop-theme);
+  @include material.mat-toolbar-theme($workshop-theme);
+  @include material.mat-button-theme($workshop-theme);
+  @include material.mat-card-theme($workshop-theme);
+  @include material.mat-form-field-theme($workshop-theme);
+
   @include banner.app-banner-theme($workshop-theme);
   @include root.app-root-theme($workshop-theme);
 }

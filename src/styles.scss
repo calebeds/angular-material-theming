@@ -2,7 +2,15 @@
 @use "/node_modules/@angular/material/theming" as material;
 @use "./styles/common.scss";
 
-@include material.mat-core(common.$workshop-typography);
+// @include material.mat-core(common.$workshop-typography);
+//This nested imports doesn't work on angular 13. It must be used .mat-core instead
+@include material.mat-ripple();
+@include material.cdk-a11y();
+@include material.cdk-overlay();
+@include material.cdk-text-field();
+
+@include material.mat-private-strong-focus-indicators-positioning();
+@include material.mat-base-typography(common.$workshop-typography);
 
 // @debug $workshop-theme;
 
