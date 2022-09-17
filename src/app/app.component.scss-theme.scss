@@ -1,6 +1,4 @@
 @use "/node_modules/@angular/material" as material;
-@use "/node_modules/@angular/material/core/density/private/compatibility";
-@use "/node_modules/@angular/material/toolbar/toolbar-variables";
 @use "sass:map";
 
 @mixin app-root-theme($theme) {
@@ -9,15 +7,9 @@
   $density-scale: material.get-density-config($theme);
   $isDark: map.get($theme, is-dark);
 
-  $toolbar-height: compatibility.private-density-prop-value(
-    toolbar-variables.$desktop-density-config,
-    $density-scale,
-    height
-  );
-
   .content {
     background-color: material.get-color-from-palette($backgrounds, background);
-    min-height: calc(100vh - $toolbar-height);
+    min-height: calc(100vh - #{get-content-offset($density-scale)});
   }
 
   .logo {
@@ -27,4 +19,12 @@
       background-image: url("../assets/icon-dark.jpg");
     }
   }
+}
+
+@function get-content-offset($density-scale: default) {
+  $offset: 64px;
+  @if $density-scale == minimun {
+    $offset: 44px;
+  }
+  @return $offset;
 }

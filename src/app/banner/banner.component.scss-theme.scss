@@ -10,8 +10,7 @@ $app-banner-density-config: (
 );
 
 @mixin app-banner-density($density-config) {
-  $density-scale: material.get-density-config($density-config);
-  $height: map-get($app-banner-density-config, height, $density-config);
+  $height: map.get($app-banner-density-config, height, $density-config);
 
   app-banner {
     min-height: $height;
