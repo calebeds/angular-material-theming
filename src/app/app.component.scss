@@ -1,9 +1,6 @@
-@use "/node_modules/@angular/material/theming" as m;
-
 .content {
   padding: 20px;
   box-sizing: border-box;
-  min-height: calc(100vh - #{m.$mat-toolbar-height-desktop});
 }
 
 .sort-area {

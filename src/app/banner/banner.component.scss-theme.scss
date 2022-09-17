@@ -1,4 +1,5 @@
-@use "/node_modules/@angular/material/theming" as material;
+@use "/node_modules/@angular/material" as material;
+@use "sass:map";
 
 $app-banner-density-config: (
   height: (
@@ -9,7 +10,7 @@ $app-banner-density-config: (
 );
 
 @mixin app-banner-density($density-config) {
-  $density-scale: material.mat-get-density-config($density-config);
+  $density-scale: material.get-density-config($density-config);
   $height: map-get($app-banner-density-config, height, $density-config);
 
   app-banner {
@@ -20,30 +21,25 @@ $app-banner-density-config: (
 @mixin app-banner-typography($typography-config) {
   app-banner {
     .heading {
-      @include material.mat-typography-level-to-styles(
-        $typography-config,
-        title
-      );
+      @include material.typography-level($typography-config, title);
     }
 
     .message {
-      @include material.mat-typography-level-to-styles(
-        $typography-config,
-        body-1
-      );
+      @include material.typography-level($typography-config, body-1);
     }
   }
 }
 
 @mixin app-banner-theme($theme) {
-  $theme-colors: material.mat-get-color-config($theme);
-  $typography: material.mat-get-typography-config($theme);
-  $density: material.mat-get-density-config($theme);
+  $theme-colors: material.get-color-config($theme);
+  $typography: material.get-typography-config($theme);
+  $density: material.get-density-config($theme);
 
-  $success-color-palette: map-get($theme-colors, success);
-  $info-color-palette: map-get($theme-colors, info);
-  $warn-color-palette: map-get($theme-colors, warn);
-  $backgrounds: map-get($theme-colors, background);
+  $success-color-palette: map.get($theme-colors, success);
+  $info-color-palette: map.get($theme-colors, info);
+  $warn-color-palette: map.get($theme-colors, warn);
+  $backgrounds: map.get($theme-colors, background);
+  $foregrounds: map.get($theme-colors, foreground);
 
   @if ($density != null) {
     @include app-banner-density($density);
@@ -54,16 +50,28 @@ $app-banner-density-config: (
   }
 
   app-banner {
-    @include material.mat-private-theme-overridable-elevation(2, $theme-colors);
-    background-color: material.mat-color($backgrounds, card);
+    @include material.overridable-elevation(
+      2,
+      material.get-color-from-palette($foregrounds, elevation)
+    );
+    background-color: material.get-color-from-palette($backgrounds, card);
     &.app-banner-success {
-      background-color: material.mat-color($success-color-palette, lighter);
+      background-color: material.get-color-from-palette(
+        $success-color-palette,
+        lighter
+      );
     }
     &.app-banner-info {
-      background-color: material.mat-color($info-color-palette, lighter);
+      background-color: material.get-color-from-palette(
+        $info-color-palette,
+        lighter
+      );
     }
     &.app-banner-warn {
-      background-color: material.mat-color($warn-color-palette, lighter);
+      background-color: material.get-color-from-palette(
+        $warn-color-palette,
+        lighter
+      );
     }
   }
 }
