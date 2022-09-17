@@ -54,6 +54,7 @@ $app-banner-density-config: (
   }
 
   app-banner {
+    @include material.mat-private-theme-overridable-elevation(2, $theme-colors);
     background-color: material.mat-color($backgrounds, card);
     &.app-banner-success {
       background-color: material.mat-color($success-color-palette, lighter);
