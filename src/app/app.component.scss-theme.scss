@@ -7,6 +7,7 @@
   $theme-colors: material.get-color-config($theme);
   $backgrounds: map.get($theme-colors, background);
   $density-scale: material.get-density-config($theme);
+  $isDark: map.get($theme, is-dark);
 
   $toolbar-height: compatibility.private-density-prop-value(
     toolbar-variables.$desktop-density-config,
@@ -17,5 +18,13 @@
   .content {
     background-color: material.get-color-from-palette($backgrounds, background);
     min-height: calc(100vh - $toolbar-height);
+  }
+
+  .logo {
+    @if $isDark {
+      background-image: url("../assets/icon-light.jpg");
+    } @else {
+      background-image: url("../assets/icon-dark.jpg");
+    }
   }
 }
