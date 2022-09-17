@@ -16,6 +16,7 @@
 @include text-field.text-field-autofill();
 
 @include focus-indicators.private-strong-focus-indicators-positioning();
+@include material.strong-focus-indicators();
 @include material.typography-hierarchy(common.$workshop-typography, "body");
 
 // @debug $workshop-theme;

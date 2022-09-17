@@ -33,6 +33,12 @@ $workshop-typography: material.define-typography-config(
   @include material.button-theme($workshop-theme);
   @include material.card-theme($workshop-theme);
   @include material.form-field-theme($workshop-theme);
+  body {
+    @include material.strong-focus-indicators-theme($workshop-theme);
+  }
+  .mat-toolbar.mat-primary {
+    @include material.strong-focus-indicators-theme(white);
+  }
 
   @include banner.app-banner-theme($workshop-theme);
   @include root.app-root-theme($workshop-theme);
